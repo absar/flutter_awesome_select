@@ -4,6 +4,10 @@
 * Adds new configurable option to not shrink wrap list items using `S2ChoiceConfig.shrinkWrap` or `SmartSelect.single.choiceShrinkWrap`/`SmartSelect.multiple.choiceShrinkWrap`.
  If `choiceShrinkWrap` is true choices list will shrink wrap the choices, causing the list to resize based on the number of available choices, by default it will shrink wrap which was the default behaviour before this change.
 * Fixes #27 A S2Filter was used after being disposed
+* `Chosen.resolve` should not call notifyListeners twice, to avoid unnecessary rebuilds
+* `Chosen` should not call notifyListeners if there are no listeners, had to do it reluctantly due to bad API design
+* Flutter 3.13 updates and lint issues
+* Upgrade dependency: collection
 
 ## [6.5.0-beta]
 * type fixes

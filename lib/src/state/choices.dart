@@ -106,17 +106,17 @@ class S2Choices<T> extends ChangeNotifier {
   }
 
   /// Function to load choice items
-  void load(S2ChoicesTask _task, {String? query}) async {
+  void load(S2ChoicesTask task, {String? query}) async {
     // skip the loader if the status busy
     if (isBusy) return null;
 
-    final bool isInitializing = _task == S2ChoicesTask.init;
-    final bool isAppending = _task == S2ChoicesTask.append;
+    final bool isInitializing = task == S2ChoicesTask.init;
+    final bool isAppending = task == S2ChoicesTask.append;
 
     // skip the loader if the items already filled
     if (isInitializing && isNotEmpty) return null;
 
-    task = _task;
+    this.task = task;
     page = isAppending ? page + 1 : 1;
     notifyListeners();
 
@@ -136,7 +136,7 @@ class S2Choices<T> extends ChangeNotifier {
       error = e;
     } finally {
       await Future.delayed(delay ?? const Duration(milliseconds: 300), () {
-        task = null;
+        this.task = null;
         notifyListeners();
       });
     }

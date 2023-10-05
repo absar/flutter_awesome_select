@@ -138,8 +138,8 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
         backgroundColor:
             widget.modalConfig.isFullPage != true ? theme.cardColor : null,
         textStyle: widget.modalConfig.isFullPage != true
-            ? theme.textTheme.headline6
-            : theme.primaryTextTheme.headline6,
+            ? theme.textTheme.titleLarge
+            : theme.primaryTextTheme.titleLarge,
         iconTheme:
             widget.modalConfig.isFullPage != true ? theme.iconTheme : null,
         errorStyle: const TextStyle(
@@ -242,7 +242,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
   /// Returns the modal title widget
   Widget get modalTitle {
     String title = modalConfig.title ?? widget.title ?? widget.placeholder!;
-    return Container(child: Text(title, style: modalHeaderStyle.textStyle));
+    return Text(title, style: modalHeaderStyle.textStyle);
   }
 
   void modalErrorShake() {
@@ -575,12 +575,12 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
       itemBuilder: (context, i) {
         return choices!.isAppending && i == choiceList.length
             ? const Center(
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator(),
-              ),
-            )
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(),
+                ),
+              )
             : choiceListBuilder(choiceList[i])!;
       },
       dividerBuilder: builder.choiceDivider,
@@ -713,7 +713,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
           isScrollControlled: true,
           builder: (_) {
             final MediaQueryData mediaQuery =
-                MediaQueryData.fromWindow(WidgetsBinding.instance.window);
+                MediaQueryData.fromView(View.of(context));
             final double topObstructions = mediaQuery.viewPadding.top;
             final double bottomObstructions = mediaQuery.viewPadding.bottom;
             final double keyboardHeight = mediaQuery.viewInsets.bottom;

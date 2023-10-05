@@ -207,7 +207,7 @@ class S2MultiChosen<T> extends S2ChosenData<T> with S2MultiChosenData<T> {
   }
 }
 
-abstract class S2ChosenNotifier<T> extends ChangeNotifier with S2ChosenData<T> {
+abstract class S2ChosenNotifier<T> extends S2ChosenData<T> with ChangeNotifier {
   /// A Function used to validate the selection(s)
   covariant var validation;
 
@@ -222,12 +222,6 @@ abstract class S2ChosenNotifier<T> extends ChangeNotifier with S2ChosenData<T> {
 
   /// Validate the selection
   void validate();
-
-  /// Validate the selection
-  // void validate() {
-  //   error = validation?.call(choice) ?? '';
-  //   notifyListeners();
-  // }
 }
 
 mixin S2SingleChosenNotifier<T> on S2ChosenNotifier<T> {
@@ -239,7 +233,7 @@ mixin S2SingleChosenNotifier<T> on S2ChosenNotifier<T> {
   @override
   void validate() {
     error = validation?.call(S2SingleChosen(choice)) ?? '';
-    notifyListeners();
+    if (hasListeners) notifyListeners();
   }
 }
 
@@ -252,7 +246,7 @@ mixin S2MultiChosenNotifier<T> on S2ChosenNotifier<T> {
   @override
   void validate() {
     error = validation?.call(S2MultiChosen(choice)) ?? '';
-    notifyListeners();
+    if (hasListeners) notifyListeners();
   }
 }
 
@@ -310,7 +304,7 @@ class S2SingleSelected<T> extends S2Selected<T> with S2SingleChosenData<T> {
   @override
   void validate() {
     error = validation?.call(S2SingleChosen(choice)) ?? '';
-    notifyListeners();
+    if (hasListeners) notifyListeners();
   }
 
   /// Function to resolve [choice] from [value]
@@ -325,7 +319,6 @@ class S2SingleSelected<T> extends S2Selected<T> with S2SingleChosenData<T> {
 
     isResolving = true;
     resolver = resolver ?? defaultResolver;
-    notifyListeners();
 
     try {
       _choice = await resolver?.call(_value);
@@ -401,7 +394,7 @@ class S2MultiSelected<T> extends S2Selected<T> with S2MultiChosenData<T> {
   @override
   void validate() {
     error = validation?.call(S2MultiChosen(choice)) ?? '';
-    notifyListeners();
+    if (hasListeners) notifyListeners();
   }
 
   /// Function to resolve [choice] from [value]
@@ -416,7 +409,6 @@ class S2MultiSelected<T> extends S2Selected<T> with S2MultiChosenData<T> {
 
     isResolving = true;
     resolver = resolver ?? defaultResolver;
-    notifyListeners();
 
     try {
       _choice = await resolver?.call(_value);
@@ -507,7 +499,7 @@ class S2SingleSelection<T> extends S2Selection<T> with S2SingleChosenData<T> {
   @override
   void validate() {
     error = validation?.call(S2SingleChosen(choice)) ?? '';
-    notifyListeners();
+    if (hasListeners) notifyListeners();
   }
 
   @override
@@ -563,7 +555,7 @@ class S2MultiSelection<T> extends S2Selection<T> with S2MultiChosenData<T> {
   @override
   void validate() {
     error = validation?.call(S2MultiChosen(choice)) ?? '';
-    notifyListeners();
+    if (hasListeners) notifyListeners();
   }
 
   @override

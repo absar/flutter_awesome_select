@@ -133,7 +133,12 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
 
   /// Returns the modal config
   S2ModalConfig get modalConfig {
-    return widget.modalConfig.copyWith(
+    if (_modalConfig != null &&
+        _modalConfig!.isFullPage == widget.modalConfig.isFullPage) {
+      return _modalConfig!;
+    }
+
+    _modalConfig = widget.modalConfig.copyWith(
       headerStyle: S2ModalHeaderStyle(
         backgroundColor:
             widget.modalConfig.isFullPage != true ? theme.cardColor : null,
@@ -148,7 +153,10 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
         ),
       ).merge(widget.modalConfig.headerStyle),
     );
+    return _modalConfig!;
   }
+
+  S2ModalConfig? _modalConfig;
 
   /// Returns the modal style
   S2ModalStyle get modalStyle => modalConfig.style;
@@ -695,12 +703,14 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
     bool? confirmed = false;
     switch (modalConfig.type) {
       case S2ModalType.fullPage:
+        if (!mounted) return confirmed;
         confirmed = await (Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => modal),
         ));
         break;
       case S2ModalType.bottomSheet:
+        if (!mounted) return confirmed;
         confirmed = await (showModalBottomSheet(
           context: context,
           shape: modalStyle.shape,
@@ -738,6 +748,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
         ));
         break;
       case S2ModalType.popupDialog:
+        if (!mounted) return confirmed;
         confirmed = await (showDialog(
           context: context,
           useSafeArea: true,

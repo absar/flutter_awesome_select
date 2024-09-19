@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_select/flutter_awesome_select.dart';
-import 'package:theme_patrol2/theme_patrol2.dart';
+import 'package:theme_patrol/theme_patrol.dart';
 
 class FeaturesBrightness extends StatefulWidget {
   @override
@@ -20,10 +20,9 @@ class _FeaturesBrightnessState extends State<FeaturesBrightness> {
   Widget build(BuildContext context) {
     return SmartSelect<int>.single(
       title: 'Brightness',
-      selectedValue:
-          ThemePatrol.of(context)?.themeMode?.index ?? ThemeMode.system.index,
+      selectedValue: ThemePatrol.of(context).mode.index,
       onChange: (selected) {
-        ThemePatrol.of(context)?.setMode(ThemeMode.values[selected.value]);
+        ThemePatrol.of(context).toMode(ThemeMode.values[selected.value]);
       },
       modalType: S2ModalType.bottomSheet,
       modalHeader: false,

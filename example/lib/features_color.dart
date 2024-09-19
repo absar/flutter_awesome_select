@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_select/flutter_awesome_select.dart';
-import 'package:theme_patrol2/theme_patrol2.dart';
+import 'package:theme_patrol/theme_patrol.dart';
 
 class FeaturesColor extends StatefulWidget {
   @override
@@ -25,7 +25,7 @@ class _FeaturesColorState extends State<FeaturesColor> {
       selectedValue: _themeColor,
       onChange: (selected) {
         setState(() => _themeColor = selected.value);
-        ThemePatrol.of(context)?.setColor(_themeColor);
+        ThemePatrol.of(context).toColor(_themeColor);
       },
       choiceItems: colors,
       choiceLayout: S2ChoiceLayout.grid,

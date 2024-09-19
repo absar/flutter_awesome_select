@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_select/flutter_awesome_select.dart';
-import 'package:theme_patrol2/theme_patrol2.dart';
+import 'package:theme_patrol/theme_patrol.dart';
 
 class FeaturesTheme extends StatefulWidget {
   @override
@@ -25,10 +25,10 @@ class _FeaturesThemeState extends State<FeaturesTheme> {
         Expanded(
           child: SmartSelect<ThemeMode?>.single(
             title: 'Brightness',
-            selectedValue: ThemePatrol.of(context)?.themeMode,
+            selectedValue: ThemePatrol.of(context).mode,
             onChange: (selected) {
               ThemePatrol.of(context)
-                  ?.setMode(selected.value ?? ThemeMode.system);
+                  .toMode(selected.value ?? ThemeMode.system);
             },
             modalType: S2ModalType.bottomSheet,
             modalHeader: false,
@@ -74,9 +74,9 @@ class _FeaturesThemeState extends State<FeaturesTheme> {
               return S2Tile.fromState(
                 state,
                 isTwoLine: true,
-                trailing: ThemePatrol.of(context)?.isLightMode ?? false
+                trailing: ThemePatrol.of(context).isLightMode
                     ? const Icon(Icons.brightness_low)
-                    : ThemePatrol.of(context)?.isDarkMode ?? false
+                    : ThemePatrol.of(context).isDarkMode
                         ? const Icon(Icons.brightness_2)
                         : const Icon(Icons.brightness_auto),
               );
@@ -93,7 +93,7 @@ class _FeaturesThemeState extends State<FeaturesTheme> {
             selectedValue: _themeColor,
             onChange: (selected) {
               setState(() => _themeColor = selected.value);
-              ThemePatrol.of(context)?.setColor(_themeColor);
+              ThemePatrol.of(context).toColor(_themeColor);
             },
             choiceItems: S2Choice.listFrom<Color, Color>(
               source: Colors.primaries,

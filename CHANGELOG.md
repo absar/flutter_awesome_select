@@ -10,6 +10,8 @@
 * Upgrade dependency: collection
 * Improve S2State.modalConfig performance, previously it was always computed whenever the getter is accessed, now it will recalculate only if data is changed
 * Put mounted checks in S2State._showModalByType
+* Flutter 3.22 updates and upgrade dependencies. Minimum supported Flutter is now 3.22
+* Update Gradle to DSL
 
 ## [6.5.0-beta]
 * type fixes

@@ -356,10 +356,10 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
               icon: modalConfig.confirmIcon!,
               label: modalConfig.confirmLabel!,
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color?>(
+                backgroundColor: WidgetStateProperty.all<Color?>(
                   modalConfig.confirmIsDark ? modalConfig.confirmColor : null,
                 ),
-                textStyle: MaterialStateProperty.all<TextStyle>(
+                textStyle: WidgetStateProperty.all<TextStyle>(
                   TextStyle(
                       color: modalConfig.confirmIsLight
                           ? modalConfig.confirmColor
@@ -377,11 +377,11 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
                 const EdgeInsets.fromLTRB(0, 0, 10, 0),
             child: TextButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color?>(
+                backgroundColor: WidgetStateProperty.all<Color?>(
                     modalConfig.confirmIsDark
                         ? modalConfig.confirmColor ?? Colors.blueGrey
                         : null),
-                textStyle: MaterialStateProperty.all<TextStyle>(
+                textStyle: WidgetStateProperty.all<TextStyle>(
                   TextStyle(
                       color: modalConfig.confirmIsLight
                           ? modalConfig.confirmColor

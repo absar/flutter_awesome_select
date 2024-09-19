@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:theme_patrol2/theme_patrol2.dart';
+import 'package:theme_patrol/theme_patrol.dart';
 import 'features.dart';
 
 void main() => runApp(MyApp());
@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
         // accentColor: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      mode: ThemeMode.system,
-      builder: (context, theme) {
+      initialMode: ThemeMode.system,
+      builder: (context, theme, w) {
         return MaterialApp(
           title: 'Smart Select',
-          theme: theme?.light,
-          darkTheme: theme?.dark,
-          themeMode: theme?.mode,
+          theme: theme.lightData,
+          darkTheme: theme.darkData,
+          themeMode: theme.mode,
           home: Features(),
         );
       },

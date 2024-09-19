@@ -12,6 +12,7 @@
 * Put mounted checks in S2State._showModalByType
 * Flutter 3.22 updates and upgrade dependencies. Minimum supported Flutter is now 3.22
 * Update Gradle to DSL
+* Enhance the bottom sheet user experience for cases where the sheet is opened with the keyboard already visible. Address the issue where the sheet initially appears larger, then resizes once the keyboard is dismissed
 
 ## [6.5.0-beta]
 * type fixes

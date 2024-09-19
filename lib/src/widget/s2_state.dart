@@ -698,8 +698,11 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
     return const S2ChoicesEmpty();
   }
 
+  bool _shouldPadByKeyboardHeight = false;
+
   /// Show the modal by type
   Future<bool?> _showModalByType() async {
+    _shouldPadByKeyboardHeight = false;
     bool? confirmed = false;
     switch (modalConfig.type) {
       case S2ModalType.fullPage:
@@ -726,14 +729,28 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
                 MediaQueryData.fromView(View.of(context));
             final double topObstructions = mediaQuery.viewPadding.top;
             final double bottomObstructions = mediaQuery.viewPadding.bottom;
-            final double keyboardHeight = mediaQuery.viewInsets.bottom;
+            final bottomInsets = mediaQuery.viewInsets.bottom;
+            final bool isKeyboardOpen = bottomInsets > 0;
+            final double keyboardHeight =
+                _shouldPadByKeyboardHeight ? bottomInsets : 0;
             final double deviceHeight = mediaQuery.size.height;
-            final bool isKeyboardOpen = keyboardHeight > 0;
             final double maxHeightFactor =
-                isKeyboardOpen ? 1 : modalConfig.maxHeightFactor;
+                (isKeyboardOpen && _shouldPadByKeyboardHeight)
+                    ? 1
+                    : modalConfig.maxHeightFactor;
             final double modalHeight =
                 (deviceHeight * maxHeightFactor) + keyboardHeight;
             final bool isFullHeight = modalHeight >= deviceHeight;
+
+            // To prevent the bottom sheet from resizing twice, if keyboard was open
+            // before bottom sheet was requested, the flag should be made true only
+            // after keyboard is closed. This is to improve UX
+            if (!_shouldPadByKeyboardHeight && !isKeyboardOpen) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _shouldPadByKeyboardHeight = true;
+              });
+            }
+
             return Container(
               padding: EdgeInsets.only(
                 top: isFullHeight ? topObstructions : 0,

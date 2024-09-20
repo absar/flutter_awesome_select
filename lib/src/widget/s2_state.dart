@@ -724,6 +724,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
           barrierColor: modalConfig.barrierColor,
           enableDrag: modalConfig.enableDrag,
           isScrollControlled: true,
+          sheetAnimationStyle: widget.modelAnimationStyle,
           builder: (_) {
             final MediaQueryData mediaQuery =
                 MediaQueryData.fromView(View.of(context));

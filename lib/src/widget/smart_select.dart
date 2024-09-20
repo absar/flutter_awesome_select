@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_select/flutter_awesome_select.dart';
-// import 'state/selected.dart';
-// import 'state/selection.dart';
 
 /// SmartSelect allows you to easily convert your usual form select or dropdown
 /// into dynamic page, popup dialog, or sliding bottom sheet with various choices input
@@ -93,9 +91,12 @@ class SmartSelect<T> extends StatefulWidget {
   /// Builder collection of multiple choice widget
   final S2MultiBuilder<T>? multiBuilder;
 
+  /// Animation style used to open/close model sheet in case it's a bottom sheet
+  final AnimationStyle? modelAnimationStyle;
+
   /// Default constructor
   SmartSelect({
-    Key? key,
+    super.key,
     this.title,
     this.placeholder,
     required this.isMultiChoice,
@@ -124,6 +125,7 @@ class SmartSelect<T> extends StatefulWidget {
     this.groupConfig = const S2GroupConfig(),
     this.choiceItems,
     this.choiceLoader,
+    this.modelAnimationStyle,
   })  : assert(
           title != null || modalConfig.title != null,
           'title and modalConfig.title must not be both null',
@@ -147,8 +149,7 @@ class SmartSelect<T> extends StatefulWidget {
         assert(
           choiceItems != null || choiceLoader != null,
           '`choiceItems` and `choiceLoader` can\'t be both null',
-        ),
-        super(key: key);
+        );
 
   /// Constructor for single choice
   ///
@@ -397,6 +398,9 @@ class SmartSelect<T> extends StatefulWidget {
     bool? modalFilter,
     bool? modalFilterAuto,
     String? modalFilterHint,
+
+    /// Animation style used to open/close model sheet in case it's a bottom sheet
+    AnimationStyle? modelAnimationStyle,
   }) {
     S2ChoiceConfig defaultChoiceConfig = const S2ChoiceConfig(
       type: S2ChoiceType.radios,
@@ -425,6 +429,7 @@ class SmartSelect<T> extends StatefulWidget {
       singleOnModalWillClose: onModalWillClose,
       singleValidation: validation,
       singleModalValidation: modalValidation,
+      modelAnimationStyle: modelAnimationStyle,
       singleBuilder: S2SingleBuilder<T>().merge(builder).copyWith(
             tile: tileBuilder,
             modal: modalBuilder,
@@ -725,6 +730,9 @@ class SmartSelect<T> extends StatefulWidget {
     bool? modalFilter,
     bool? modalFilterAuto,
     String? modalFilterHint,
+
+    /// Animation style used to open/close model sheet in case it's a bottom sheet
+    AnimationStyle? modelAnimationStyle,
   }) {
     S2ChoiceConfig defaultChoiceConfig = const S2ChoiceConfig(
       type: S2ChoiceType.checkboxes,
@@ -753,6 +761,7 @@ class SmartSelect<T> extends StatefulWidget {
       multiOnModalWillClose: onModalWillClose,
       multiValidation: validation,
       multiModalValidation: modalValidation,
+      modelAnimationStyle: modelAnimationStyle,
       multiBuilder: S2MultiBuilder<T>().merge(builder).copyWith(
             tile: tileBuilder,
             modal: modalBuilder,

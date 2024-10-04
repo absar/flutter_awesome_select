@@ -24,7 +24,6 @@ class S2ChoicesList<T> extends StatelessWidget {
     required this.itemBuilder,
     required this.dividerBuilder,
     required this.config,
-    this.scrollController,
   });
 
   @override

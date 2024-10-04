@@ -85,7 +85,7 @@ class S2Tile<T> extends StatelessWidget {
 
   /// Create a default trigger widget
   const S2Tile({
-    Key? key,
+    super.key,
     required this.value,
     required this.onTap,
     required this.title,
@@ -103,12 +103,12 @@ class S2Tile<T> extends StatelessWidget {
     this.hideValue = false,
     this.padding,
     this.body,
-  }) : super(key: key);
+  });
 
   /// Create a default trigger widget from state
   S2Tile.fromState(
     S2State<T> state, {
-    Key? key,
+    super.key,
     Widget? value,
     GestureTapCallback? onTap,
     Widget? title,
@@ -130,8 +130,7 @@ class S2Tile<T> extends StatelessWidget {
         value = value ?? Text(state.selected.toString()),
         onTap = onTap ?? state.showModal,
         isLoading = isLoading ?? state.selected.isResolving,
-        isError = isError ?? state.selected.isNotValid,
-        super(key: key);
+        isError = isError ?? state.selected.isNotValid;
 
   /// Returns default trailing widget
   static const Widget defaultTrailing = Icon(

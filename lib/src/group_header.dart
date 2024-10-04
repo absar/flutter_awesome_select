@@ -14,11 +14,11 @@ class S2GroupHeader extends StatelessWidget {
 
   /// Default constructor
   const S2GroupHeader({
-    Key? key,
+    super.key,
     required this.title,
     this.trailing,
     this.style,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

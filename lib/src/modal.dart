@@ -6,10 +6,10 @@ class S2Modal extends StatefulWidget {
   ///
   /// The [builder] argument must not be null.
   const S2Modal({
-    Key? key,
+    super.key,
     required this.builder,
     required this.onReady,
-  }) : super(key: key);
+  });
 
   /// Called to obtain the child widget.
   ///

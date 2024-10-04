@@ -19,13 +19,13 @@ class S2Text extends StatelessWidget {
 
   /// Default constructor
   const S2Text({
-    Key? key,
+    super.key,
     this.text,
     this.style,
     this.highlight,
     this.highlightColor,
     this.caseSensitive = false,
-  }) : super(key: key);
+  });
 
   /// Default hightlight color
   ///

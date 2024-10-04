@@ -19,12 +19,13 @@ class S2ChoicesList<T> extends StatelessWidget {
 
   /// Default constructor
   const S2ChoicesList({
-    Key? key,
+    super.key,
     required this.itemLength,
     required this.itemBuilder,
     required this.dividerBuilder,
     required this.config,
-  }) : super(key: key);
+    this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,10 +116,5 @@ class S2ChoicesList<T> extends StatelessWidget {
       thickness: config.dividerThickness,
       height: config.dividerSpacing,
     );
-    // return S2Divider(
-    //   color: config.dividerColor,
-    //   spacing: config.dividerSpacing,
-    //   thickness: config.dividerThickness,
-    // );
   }
 }

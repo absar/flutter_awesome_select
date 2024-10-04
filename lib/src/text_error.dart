@@ -53,11 +53,11 @@ class S2TextError extends StatefulWidget {
 
   /// Default constructor
   const S2TextError({
-    Key? key,
+    super.key,
     this.child,
     this.visibled,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   S2TextErrorState createState() => S2TextErrorState();

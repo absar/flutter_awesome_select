@@ -60,7 +60,7 @@ class S2TileChips extends StatelessWidget {
 
   /// Create a chips tile/trigger widget
   const S2TileChips({
-    Key? key,
+    super.key,
     required this.chipLength,
     required this.chipLabelBuilder,
     this.chipAvatarBuilder,
@@ -79,7 +79,7 @@ class S2TileChips extends StatelessWidget {
     this.placeholder,
     this.scrollable = false,
     this.padding,
-  }) : super(key: key);
+  });
 
   /// default padding
   static const EdgeInsetsGeometry defaultPadding =

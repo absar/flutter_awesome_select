@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart' show ListEquality;
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_select/flutter_awesome_select.dart';
+import '../utils/ui_utils.dart';
 import '../state/choices.dart';
 import '../state/filter.dart';
 import '../choices_resolver.dart';
@@ -103,7 +104,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
       titleStyle: const TextStyle(),
       subtitleStyle: const TextStyle(),
       control: S2ChoiceControl.platform,
-      highlightColor: theme.highlightColor.withOpacity(.7),
+      highlightColor: theme.highlightColor.asWithOpacity(.7),
     );
   }
 

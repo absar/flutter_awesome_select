@@ -15,6 +15,8 @@
 * Enhance the bottom sheet user experience for cases where the sheet is opened with the keyboard already visible. Address the issue where the sheet initially appears larger, then resizes once the keyboard is dismissed
 * Option to customize bottom sheet animation using `SmartSelect.modelAnimationStyle`
 * Upgrade kotlin plugin from 1.7.20 to 1.8.22 and Gradle from 8.2 to 8.3, to sync it with Flutter 3.24
+* Upgrade kotlin plugin from 1.8.22 to 2.1.0 and Gradle from 8.3 to 8.9
+* Flutter 3.32 updates
 
 ## [6.5.0-beta]
 * type fixes

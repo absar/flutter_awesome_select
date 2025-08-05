@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'utils/ui_utils.dart';
+
 /// Generate ChipTheme that supports outlined and raised chip
 class S2ChipTheme extends StatelessWidget {
   /// Default constructor
@@ -66,7 +68,7 @@ class S2ChipTheme extends StatelessWidget {
         ? primaryColor
         : outlined == true
             ? Colors.transparent
-            : primaryColor?.withOpacity(opacity ?? backgroundAlpha);
+            : primaryColor?.asWithOpacity(opacity ?? backgroundAlpha);
     final disabledColor = primaryColor?.withAlpha(disabledAlpha);
 
     final secondaryColor = color ?? Theme.of(context).primaryColor;
@@ -74,7 +76,7 @@ class S2ChipTheme extends StatelessWidget {
         ? secondaryColor
         : outlined == true
             ? Colors.transparent
-            : secondaryColor.withOpacity(opacity ?? backgroundAlpha);
+            : secondaryColor.asWithOpacity(opacity ?? backgroundAlpha);
 
     final foregroundColor = raised == true
         ? Colors.white
@@ -96,8 +98,8 @@ class S2ChipTheme extends StatelessWidget {
         ? StadiumBorder(
             side: BorderSide(
               color: selected == true
-                  ? secondaryColor.withOpacity(opacity ?? borderAlpha)
-                  : primaryColor!.withOpacity(opacity ?? borderAlpha),
+                  ? secondaryColor.asWithOpacity(opacity ?? borderAlpha)
+                  : primaryColor!.asWithOpacity(opacity ?? borderAlpha),
             ),
           )
         : null;

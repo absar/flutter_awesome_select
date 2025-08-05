@@ -47,7 +47,7 @@ class _FeaturesModalValidationState extends State<FeaturesModalValidation> {
                 color: choice.selected ? Theme.of(context).primaryColor : null,
               ),
               highlight: state.filter?.value,
-              highlightColor: Theme.of(context).primaryColor.withOpacity(.7),
+              highlightColor: Theme.of(context).primaryColorLight,
             );
           },
           tileBuilder: (context, state) {

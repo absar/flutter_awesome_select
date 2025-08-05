@@ -1,4 +1,4 @@
-library flutter_awesome_select;
+library;
 
 export 'src/widget/s2_multiple_state.dart';
 export 'src/widget/s2_single_state.dart';

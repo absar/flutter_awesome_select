@@ -1,4 +1,12 @@
-## [Next]
+## [6.7.0] 2026-02-07
+* BREAKING: Flutter 3.38 updates
+* BREAKING: Bump minimum supported Flutter version to 3.35
+* Upgrade dependencies
+* Upgrade example app to Gradle 8.14
+* Upgrade example sourceCompatibility JavaVersion.VERSION_17, targetCompatibility JavaVersion.VERSION_17
+* Upgrade example Kotlin to 2.2.21
+
+## [6.6.3]
 * Fixes issue #3 list items are not refreshed when the items’ source e.g. a change notifier Provider sends an updated list.
 * Corrects spelling mistakes in documentation.
 * Adds new configurable option to not shrink wrap list items using `S2ChoiceConfig.shrinkWrap` or `SmartSelect.single.choiceShrinkWrap`/`SmartSelect.multiple.choiceShrinkWrap`.

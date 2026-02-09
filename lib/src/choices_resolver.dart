@@ -75,7 +75,7 @@ class S2ChoiceResolver<T> {
         title: titleBuilder(choice),
         subtitle: subtitleBuilder(choice),
         secondary: secondaryBuilder(choice),
-        activeColor:
+        activeThumbColor:
             choice.activeStyle!.accentColor ?? choice.activeStyle!.color,
         activeTrackColor: choice.activeStyle!.color?.withAlpha(0x80),
         inactiveThumbColor: choice.style!.accentColor,

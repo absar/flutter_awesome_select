@@ -109,7 +109,6 @@ class _FeaturesModalConfirmState extends State<FeaturesModalConfirm> {
           choiceActiveStyle: const S2ChoiceStyle(color: Colors.redAccent),
           modalType: S2ModalType.bottomSheet,
           modalValidation: (selected) {
-            if (selected == null) return 'Select at least one';
             if (selected.value == 'iro') return 'Ironman is busy';
             return '';
           },

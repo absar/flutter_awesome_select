@@ -1,3 +1,6 @@
+## [6.7.1] 2026-03-21
+* Fix `Null check operator used on a null value` due to unmounted context being accessed from `closeModal` and `theme`
+
 ## [6.7.0] 2026-02-07
 * BREAKING: Flutter 3.38 updates
 * BREAKING: Bump minimum supported Flutter version to 3.35

@@ -96,7 +96,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
   bool get isSingleChoice => !isMultiChoice;
 
   /// Returns [ThemeData] from the widget context
-  ThemeData get theme => Theme.of(context);
+  ThemeData get theme;
 
   /// Returns the default style for unselected choice
   S2ChoiceStyle get defaultChoiceStyle {
@@ -793,6 +793,7 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
 
   /// Function to close the choice modal
   void closeModal({bool confirmed = true}) {
+    if(!mounted) return;
     // pop the navigation
     if (confirmed == true) {
       // will call the onWillPop

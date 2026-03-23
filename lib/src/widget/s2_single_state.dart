@@ -93,6 +93,16 @@ class S2SingleState<T> extends S2State<T> {
   }
 
   @override
+  ThemeData get theme => _theme;
+  late ThemeData _theme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _theme = Theme.of(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return builder?.tile?.call(context, this) ?? defaultTile;
   }

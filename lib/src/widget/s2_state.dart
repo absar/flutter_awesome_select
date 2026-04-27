@@ -726,7 +726,8 @@ abstract class S2State<T> extends State<SmartSelect<T>> {
           enableDrag: modalConfig.enableDrag,
           isScrollControlled: true,
           sheetAnimationStyle: widget.modelAnimationStyle,
-          builder: (_) {
+          builder: (context) {
+            if(!context.mounted) return SizedBox.shrink();
             final MediaQueryData mediaQuery =
                 MediaQueryData.fromView(View.of(context));
             final double topObstructions = mediaQuery.viewPadding.top;

@@ -1,3 +1,6 @@
+## [6.7.2] 2026-04-27
+* Fix `Null check operator used on a null value` due to unmounted context being accessed while showing bottom sheet
+
 ## [6.7.1] 2026-03-21
 * Fix `Null check operator used on a null value` due to unmounted context being accessed from `closeModal` and `theme`
 

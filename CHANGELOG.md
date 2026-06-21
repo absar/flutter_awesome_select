@@ -1,3 +1,6 @@
+## [6.7.3] 2026-06-21
+* Fix `Null check operator used on a null value` due to unmounted context being accessed while showing filter
+
 ## [6.7.2] 2026-04-27
 * Fix `Null check operator used on a null value` due to unmounted context being accessed while showing bottom sheet
 

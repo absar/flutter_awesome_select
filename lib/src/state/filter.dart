@@ -27,11 +27,14 @@ class S2Filter extends ChangeNotifier {
 
   /// Show the filter and add history to route
   void show(BuildContext context) {
+    if (!context.mounted) return;
     // add history to route, so back button will appear
     // and when physical back button pressed
     // will close the searchbar instead of close the modal
     LocalHistoryEntry entry = LocalHistoryEntry(onRemove: stop);
-    ModalRoute.of(context)!.addLocalHistoryEntry(entry);
+    final route = ModalRoute.of(context);
+    if (route == null) return;
+    route.addLocalHistoryEntry(entry);
 
     _activated = true;
     notifyListeners();
